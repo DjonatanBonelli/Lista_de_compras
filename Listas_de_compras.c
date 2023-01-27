@@ -1,12 +1,12 @@
 /*
- Este é um esqueleto que deve ser utilizado como base para implementação do trabalho;
-	- As funções não têm os parâmetros definidos; se necessário, estes devem ser incluídos; Os tipos de retorno podem ser alterados, se necessário;
- 	- Devem ser respeitados os nomes atribuídos às funções e estruturas, porém, novas estruturas e funções podem ser criadas, caso julgue necessário;
-	- Faça os includes necessários;
-	- A organização das funções fica a critério do programador;
-	- A indentação correta faz parte da nota;
-	- Não são permitidas variáveis globais;
-	- Caso seja detectado plágio, os grupos envolvidos receberão nota 0.
+ Este Ã© um esqueleto que deve ser utilizado como base para implementaÃ§Ã£o do trabalho;
+	- As funÃ§Ãµes nÃ£o tÃªm os parÃ¢metros definidos; se necessÃ¡rio, estes devem ser incluÃ­dos; Os tipos de retorno podem ser alterados, se necessÃ¡rio;
+ 	- Devem ser respeitados os nomes atribuÃ­dos Ã s funÃ§Ãµes e estruturas, porÃ©m, novas estruturas e funÃ§Ãµes podem ser criadas, caso julgue necessÃ¡rio;
+	- FaÃ§a os includes necessÃ¡rios;
+	- A organizaÃ§Ã£o das funÃ§Ãµes fica a critÃ©rio do programador;
+	- A indentaÃ§Ã£o correta faz parte da nota;
+	- NÃ£o sÃ£o permitidas variÃ¡veis globais;
+	- Caso seja detectado plÃ¡gio, os grupos envolvidos receberÃ£o nota 0.
 */
 
 #include <stdio.h>
@@ -14,9 +14,9 @@
 #include <string.h> 
 #include <locale.h>
 
-#define EXIT 10  // valor fixo para a op��o que finaliza a aplica��o
+#define EXIT 10  // valor fixo para a opção que finaliza a aplicação
 
-// Struct que representa um item de uma lista de compras armazenada em uma �rvore bin�ria de busca
+// Struct que representa um item de uma lista de compras armazenada em uma árvore binária de busca
 struct item {
 	char produto[50];
 	int quantidade;
@@ -32,7 +32,7 @@ struct repeated{
 }; 
 typedef struct repeated Repeated;
 
-// Apresenta o primeiro menu da aplica��o e retorna a op��o selecionada
+// Apresenta o primeiro menu da aplicação e retorna a opção selecionada
 int menu1()
 {
      int op = 0;
@@ -40,30 +40,30 @@ int menu1()
      // complete com as demais opcoes...
      printf("1 - Gerenciar lista A\n2 - Gerenciar lista B\n3 - Ver itens duplicados\n4 - Excluir listas\n");
      printf("%d - Sair do programa\n",EXIT);
-     printf("\nDigite a op��o: ");
+     printf("\nDigite a opção: ");
      scanf("%d",&op);
      return op;
 }
 
-// Apresenta o segundo menu da aplica��o e retorna a op��o selecionada
+// Apresenta o segundo menu da aplicação e retorna a opção selecionada
 int menu2()
 {
      int op = 0;
      printf("Submenu - Gerenciar lista de compras\n");
      printf("1 - Inserir\n2 - Buscar\n3 - Atualizar\n4 - Listar\n5 - Deletar\n");
      printf("%d - Retornar para o menu principal\n",EXIT);
-     printf("\nDigite a op��o: ");
+     printf("\nDigite a opção: ");
      scanf("%d",&op); 
      return op;
 }
 
-// Fun��o padr�o de inicializar a �rvore como NULL
+// Função padrão de inicializar a árvore como NULL
 Item *inicializar(){
     //printf("inicializando\n");
     return NULL;
 }
 
-// Cria o item que ser� inserido como n�
+// Cria o item que será inserido como nó
 Item criarItem(char produto[50], int quantidade){
     Item item;
     strcpy(item.produto, produto);
@@ -73,7 +73,7 @@ Item criarItem(char produto[50], int quantidade){
     return item;
 }
 
-// Permite o cadastro de um item (caso o produto ainda não exista) em uma lista de compas
+// Permite o cadastro de um item (caso o produto ainda nÃ£o exista) em uma lista de compas
 Item *insert(Item *raiz, Item item)
 {
      //printf("inserindo\n");
@@ -101,7 +101,7 @@ Item *insert(Item *raiz, Item item)
      }
 }
 
-// Permite consultar se um item está em uma lista de compras
+// Permite consultar se um item estÃ¡ em uma lista de compras
 int query(Item *raiz, char search[50])
 {
      if(raiz == NULL){
@@ -120,12 +120,12 @@ int query(Item *raiz, char search[50])
      }
 }
 
-// Permite a atualização da quantidade de um produto (caso exista) na lista de compras
+// Permite a atualizaÃ§Ã£o da quantidade de um produto (caso exista) na lista de compras
 int update(Item *raiz, char search[50])
 {
      if(raiz != NULL){
           if(strcmp(search, raiz->produto) == 0){
-               printf("%s est� na lista! Digite a nova quantidade: ", raiz->produto);
+               printf("%s está na lista! Digite a nova quantidade: ", raiz->produto);
                scanf("%d", &raiz->quantidade);
                return 0;
           }
@@ -139,7 +139,7 @@ int update(Item *raiz, char search[50])
      return;
 }
 
-// Listar todos os itens da lista de compras em ordem alfabética;
+// Listar todos os itens da lista de compras em ordem alfabÃ©tica;
 int list(Item *raiz)
 {
     if(raiz != NULL){
@@ -158,7 +158,7 @@ Item *delete(Item *raiz, char key[50])
         return NULL;
      }
     else{
-          //procura o n�
+          //procura o nó
         if(strcmp(raiz->produto, key) == 0){
             //remove folhas
             if(raiz->esquerdo == NULL && raiz->direito == NULL){
@@ -167,7 +167,7 @@ Item *delete(Item *raiz, char key[50])
                 return NULL;
             }
             else{
-                //remove n� com dois filhos
+                //remove nó com dois filhos
                 if(raiz->esquerdo != NULL && raiz->direito != NULL){
                     Item *aux = raiz->esquerdo;
                         while(aux->direito != NULL){
@@ -180,7 +180,7 @@ Item *delete(Item *raiz, char key[50])
                         return raiz;     
                 }
                 else{
-                        //remove n� com um filho
+                        //remove nó com um filho
                         Item *aux;
                         if(raiz->esquerdo != NULL){
                             aux = raiz->esquerdo;
@@ -194,7 +194,7 @@ Item *delete(Item *raiz, char key[50])
                 }
             }
         }
-        else{            //encontrar n�
+        else{            //encontrar nó
             if(strcmp(key, raiz->produto) < 0)
                 raiz->esquerdo = delete(raiz->esquerdo, key);
             else
@@ -212,7 +212,7 @@ Repeated *intersect(Item *raizA, Item *raizB, Repeated *primeiro)
             return;
         }
         else{
-            if(query(raizB, raizA->produto) == 0){      //percorre a lista A verificando pela fun��o query
+            if(query(raizB, raizA->produto) == 0){      //percorre a lista A verificando pela função query
                     if(primeiro == NULL){              //primeiro nulo
                         primeiro = malloc(sizeof(Repeated));
                         strcpy(primeiro->produto, raizA->produto);
@@ -220,7 +220,7 @@ Repeated *intersect(Item *raizA, Item *raizB, Repeated *primeiro)
 
                         printf("\nProduto: %s\n", primeiro->produto);
                     }
-                    else{                    //primeiro n�o nulo
+                    else{                    //primeiro não nulo
                         Repeated *aux; //auxiliar
                         aux = malloc(sizeof(Repeated));
                         strcpy(aux->produto, raizA->produto);
@@ -235,7 +235,7 @@ Repeated *intersect(Item *raizA, Item *raizB, Repeated *primeiro)
  }
 }
 
-//Libera a mem�ria total 
+//Libera a memória total 
 void liberar(Item *raizA, Item *raizB){
      if(raizA != NULL){
           liberar(raizA->esquerdo, raizB);
@@ -293,10 +293,10 @@ int main()
                                    scanf("%s", search);
                                    printf("Buscando por %s...\n", search);
                                    if(query(raizA, search) == 0){
-                                    printf("O produto %s est� na lista!", search);
+                                    printf("O produto %s está na lista!", search);
                                    }
                                    else{
-                                    printf("O produto %s n�o est� na lista!", search);
+                                    printf("O produto %s não está na lista!", search);
                                    }
                                    break;
 
@@ -344,10 +344,10 @@ int main()
                                    scanf("%s", search);
                                    printf("Buscando por %s...\n", search);
                                    if(query(raizA, search) == 0){
-                                    printf("O produto %s est� na lista!", search);
+                                    printf("O produto %s está na lista!", search);
                                    }
                                    else{
-                                    printf("O produto %s n�o est� na lista!", search);
+                                    printf("O produto %s não está na lista!", search);
                                    }
                                    break;
 
